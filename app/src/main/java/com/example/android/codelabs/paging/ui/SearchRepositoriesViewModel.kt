@@ -18,10 +18,7 @@ package com.example.android.codelabs.paging.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
-import androidx.paging.insertSeparators
-import androidx.paging.map
+import androidx.paging.*
 import com.example.android.codelabs.paging.data.GithubRepository
 import com.example.android.codelabs.paging.model.Repo
 import kotlinx.coroutines.flow.Flow
@@ -36,6 +33,7 @@ class SearchRepositoriesViewModel(private val repository: GithubRepository) : Vi
 
     private var currentSearchResult: Flow<PagingData<UiModel>>? = null
 
+    @ExperimentalPagingApi
     fun searchRepo(queryString: String): Flow<PagingData<UiModel>> {
         val lastResult = currentSearchResult
         if (queryString == currentQueryValue && lastResult != null) {

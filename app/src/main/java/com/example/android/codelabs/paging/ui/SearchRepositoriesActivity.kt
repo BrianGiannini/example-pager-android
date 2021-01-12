@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.android.codelabs.paging.Injection
@@ -43,6 +44,7 @@ class SearchRepositoriesActivity : AppCompatActivity() {
 
     private var searchJob: Job? = null
 
+    @ExperimentalPagingApi
     private fun search(query: String) {
         // Make sure we cancel the previous job before creating a new one
         searchJob?.cancel()
@@ -53,6 +55,7 @@ class SearchRepositoriesActivity : AppCompatActivity() {
         }
     }
 
+    @ExperimentalPagingApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchRepositoriesBinding.inflate(layoutInflater)
@@ -108,6 +111,7 @@ class SearchRepositoriesActivity : AppCompatActivity() {
 
     }
 
+    @ExperimentalPagingApi
     private fun initSearch(query: String) {
         binding.searchRepo.setText(query)
 
@@ -139,6 +143,7 @@ class SearchRepositoriesActivity : AppCompatActivity() {
         }
     }
 
+    @ExperimentalPagingApi
     private fun updateRepoListFromInput() {
         binding.searchRepo.text.trim().let {
             if (it.isNotEmpty()) {

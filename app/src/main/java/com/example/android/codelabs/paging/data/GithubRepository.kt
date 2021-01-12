@@ -17,6 +17,7 @@
 package com.example.android.codelabs.paging.data
 
 import android.util.Log
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -37,6 +38,7 @@ class GithubRepository(
      * Search repositories whose names match the query, exposed as a stream of data that will emit
      * every time we get more data from the network.
      */
+    @ExperimentalPagingApi
     fun getSearchResultStream(query: String): Flow<PagingData<Repo>> {
         Log.d("GithubRepository", "New query: $query")
 
